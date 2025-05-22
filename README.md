@@ -12,3 +12,8 @@ In this test, I reconfigured the WebSocket port from 2000 to 8080 on both the se
 
 This experiment confirms that the WebSocket protocol itself doesn’t change—the ws:// prefix remains the same—and that you only need to ensure both server and clients are using the same port. As long as the server listens on the correct port and the clients target that same port, the application will communicate over WebSockets flawlessly.
 
+
+## 2.3 Modifying Small Changes
+![alt text](img/Three.png)
+
+In this experiment, I updated the server so that every broadcasted message now includes the sender’s IP address and port. Instead of just forwarding the raw text, the server prepends the client’s socket address—formatting messages like 127.0.0.1:PORT: message. Once this change was deployed, all clients began displaying each incoming message alongside the sender’s network address. As you can see in the screenshot, every broadcast is now clearly tagged with its source IP and port, which makes it much easier to trace who sent what in a multi‐client environment. This simple enhancement significantly improves transparency by revealing the origin of each message.
